@@ -441,7 +441,7 @@ namespace detail {
          if (!sync_mode)
          {
             fc::microseconds latency = fc::time_point::now() - blk_msg.block.timestamp;
-            ilog( "Got block ${b} from ${w} latency ${l}ms",
+            ilog( "block ${b} by ${w} latency ${l} ms",
                ("b", blk_msg.block.block_num())
                ("w", blk_msg.block.witness)
                ("l", latency.count() / 1000) );
