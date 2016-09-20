@@ -438,6 +438,15 @@ namespace detail {
                  ("n", blk_msg.block.block_num()) );
          }
 
+         if (!sync_mode)
+         {
+            fc::microseconds latency = fc::time_point::now() - blk_msg.block.timestamp;
+            ilog( "Got block ${b} from ${w} latency ${l}ms",
+               ("b", blk_msg.block.block_num())
+               ("w", blk_msg.block.witness)
+               ("l", latency.count() / 1000) );
+         }
+
          time_point_sec now = graphene::time::now();
 
          uint64_t max_accept_time = now.sec_since_epoch();
